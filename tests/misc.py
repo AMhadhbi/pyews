@@ -27,7 +27,7 @@ def main():
     creds = WebCredentials(USER, PWD)
     ews = ExchangeService()
     ews.credentials = creds
-    ews.primary_smtp_address = "personal_name"
+    ews.primary_smtp_address = "user_email@example.com"
 
     try:
         ews.AutoDiscoverUrl()
