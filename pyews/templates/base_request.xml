@@ -15,6 +15,9 @@
           <t:PrincipalName>{{ primary_smtp_address }}</t:PrincipalName>
         </t:ConnectingSID>
       </t:ExchangeImpersonation>
+      <t:TimeZoneContext>
+        <t:TimeZoneDefinition Id="UTC" />
+      </t:TimeZoneContext>
     </soap:Header>
   <soap:Body>
     {% block body %}
