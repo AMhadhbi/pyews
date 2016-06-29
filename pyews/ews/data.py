@@ -26,7 +26,7 @@
 # be recognizabe for EWS / EWS Managed API users
 ##
 
-import mapitags
+from pyews.ews import mapitags
 
 # perhaps this is not required?
 

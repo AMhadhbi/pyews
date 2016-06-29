@@ -18,15 +18,9 @@
 # You should have a copy of the license in the doc/ directory of pyews.  If
 # not, see <http://www.gnu.org/licenses/>.
 
-import pyews.soap as soap
-import pyews.utils as utils
-from pyews.soap import SoapClient, QName_M, QName_T, unQName
-from pyews.ews.request_response import GetFolderRequest, GetFolderResponse
-from pyews.ews.request_response import FindFoldersRequest, FindFoldersResponse
-import xml.etree.ElementTree as ET
-
-import logging
-import pdb
+from pyews.soap import QName_T
+from .request_response import GetFolderRequest
+from .request_response import FindFoldersRequest
 
 
 class NotImplementedError:

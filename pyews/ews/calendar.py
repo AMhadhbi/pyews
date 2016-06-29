@@ -4,13 +4,14 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import logging
+from xml.sax.saxutils import escape
 
-from item import (ReadOnly,
-                  Item,
-                  ItemId,
-                  ChangeKey,
-                  Field,
-                  )
+from pyews.ews.item import (ReadOnly,
+                            Item,
+                            ItemId,
+                            ChangeKey,
+                            Field,
+                            )
 from pyews.soap import unQName
 from pyews.ews.data import (LegacyFreeBusyStatusType,
                             CalendarItemTypeType,
@@ -21,7 +22,6 @@ from pyews.ews.data import (LegacyFreeBusyStatusType,
                             DayOfWeekIndexType,
                             MonthRecurrenceType,
                             )
-from xml.sax.saxutils import escape
 
 _logger = logging.getLogger(__name__)
 
@@ -1215,7 +1215,7 @@ https://msdn.microsoft.com/en-us/library/office/aa564765(v=exchg.140).aspx
             (self.is_all_day_event.tag, self.is_all_day_event),
             (self.legacy_free_busy_status.tag, self.legacy_free_busy_status),
             (self.location.tag, self.location),
-            (self.when.tag, self.when),
+            # (self.when.tag, self.when),
             (self.is_meeting.tag, self.is_meeting),
             (self.is_cancelled.tag, self.is_cancelled),
             (self.is_recurring.tag, self.is_recurring),

@@ -21,46 +21,33 @@
 
 import logging
 import re
-import pdb
 import utils
-from utils import pretty_xml
-from ews.autodiscover import EWSAutoDiscover, ExchangeAutoDiscoverError
-from ews.data import DistinguishedFolderId, WellKnownFolderName
-from ews.data import FolderClass
-from ews.errors import EWSMessageError, EWSCreateFolderError
-from ews.errors import EWSDeleteFolderError
-from ews.folder import Folder
-from ews.contact import Contact
+from .ews.autodiscover import EWSAutoDiscover
+from .ews.data import WellKnownFolderName
+from .ews.errors import EWSMessageError
+from .ews.folder import Folder
 
-from ews.request_response import GetItemsRequest, GetItemsResponse
-from ews.request_response import GetContactsRequest, GetContactsResponse
-from ews.request_response import FindItemsRequest, FindItemsResponse
-from ews.request_response import CreateItemsRequest, CreateItemsResponse
-from ews.request_response import DeleteItemsRequest, DeleteItemsResponse
-from ews.request_response import FindItemsLMTRequest, FindItemsLMTResponse
-from ews.request_response import (SearchContactByEmailRequest,
-                                  SearchContactByEmailResponse)
-from ews.request_response import (MoveItemsRequest,
-                                  MoveItemsResponse)
-from ews.request_response import UpdateItemsRequest, UpdateItemsResponse
-from ews.request_response import (SyncFolderItemsRequest,
-                                  SyncFolderItemsResponse)
-from ews.request_response import (FindCalendarItemsRequest,
-                                  FindCalendarItemsResponse)
-from ews.request_response import (GetCalendarItemsRequest,
-                                  GetCalendarItemsResponse)
-from ews.request_response import (FindCalendarItemsRequestBothDate,
-                                  FindCalendarItemsResponseBothDate)
-from ews.request_response import (FindCalendarItemsRequestDate,
-                                  FindCalendarItemsResponseDate)
-from ews.request_response import GetAttachmentsRequest
-from ews.request_response import CreateAttachmentRequest
-from ews.request_response import DeleteAttachmentRequest
-from ews.request_response import UpdateCalendarItemsRequest
-
+from .ews.request_response import GetItemsRequest
+from .ews.request_response import GetContactsRequest
+from .ews.request_response import FindItemsRequest
+from .ews.request_response import CreateItemsRequest
+from .ews.request_response import DeleteItemsRequest
+from .ews.request_response import FindItemsLMTRequest
+from .ews.request_response import SearchContactByEmailRequest
+from .ews.request_response import MoveItemsRequest
+from .ews.request_response import UpdateItemsRequest
+from .ews.request_response import SyncFolderItemsRequest
+from .ews.request_response import FindCalendarItemsRequest
+from .ews.request_response import GetCalendarItemsRequest
+from .ews.request_response import FindCalendarItemsRequestBothDate
+from .ews.request_response import FindCalendarItemsRequestDate
+from .ews.request_response import GetAttachmentsRequest
+from .ews.request_response import CreateAttachmentRequest
+from .ews.request_response import DeleteAttachmentRequest
+from .ews.request_response import UpdateCalendarItemsRequest
 
 from tornado import template
-from soap import SoapClient, SoapMessageError, QName_T
+from .soap import SoapClient, SoapMessageError
 
 USER = u''
 PWD = u''

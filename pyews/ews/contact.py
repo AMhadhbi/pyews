@@ -19,21 +19,18 @@
 # not, see <http://www.gnu.org/licenses/>.
 
 import logging
-import pdb
-
-from item import (Item,
-                  Field,
-                  FieldURI,
-                  ExtendedProperty,
-                  LastModifiedTime,
-                  Categories,
-                  )
-from pyews.soap import SoapClient, unQName, QName_T
-from pyews.utils import pretty_xml
-from pyews.ews import mapitags
-from pyews.ews.data import MapiPropertyTypeType, MapiPropertyTypeTypeInv
-from pyews.ews.data import GenderType
 from xml.sax.saxutils import escape
+
+from pyews.ews.item import (Item,
+                            Field,
+                            FieldURI,
+                            ExtendedProperty,
+                            LastModifiedTime,
+                            )
+from pyews.soap import unQName, QName_T
+from pyews.ews import mapitags
+from pyews.ews.data import MapiPropertyTypeType
+from pyews.ews.data import GenderType
 _logger = logging.getLogger(__name__)
 
 

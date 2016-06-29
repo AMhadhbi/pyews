@@ -18,8 +18,6 @@
 # You should have a copy of the license in the doc/ directory of pyews.  If
 # not, see <http://www.gnu.org/licenses/>.
 
-from pyews.soap import SoapClient, SoapMessageError, QName_M
-
 
 class EWSBaseErrorStr(Exception):
     pass

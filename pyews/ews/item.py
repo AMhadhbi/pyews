@@ -18,19 +18,17 @@
 # You should have a copy of the license in the doc/ directory of pyews.  If
 # not, see <http://www.gnu.org/licenses/>.
 
+import logging
 from abc import ABCMeta, abstractmethod
-from pyews.soap import SoapClient, QName_M, QName_T, unQName
-import pyews.soap as soap
+from xml.sax.saxutils import escape
+
+from pyews.soap import SoapClient, QName_T, unQName
 import pyews.utils as utils
 from pyews.ews import mapitags
-from pyews.ews.data import MapiPropertyTypeType, MapiPropertyTypeTypeInv
+from pyews.ews.data import MapiPropertyTypeTypeInv
 from pyews.ews.data import (SensitivityType,
                             ImportanceType,
                             )
-import xml.etree.ElementTree as ET
-from xml.sax.saxutils import escape
-import logging
-import pdb
 
 gnd = SoapClient.get_node_detail
 _logger = logging.getLogger(__name__)
@@ -355,7 +353,7 @@ class ExtendedProperty(Field):
                 logging.debug(
                     'ExtendedProperty.init_from_xml(): no child node ' +
                     'ExtendedFieldURI in node: %s',
-                    pretty_xml(node))
+                    utils.pretty_xml(node))
             else:
                 self.attrib.update(uri.attrib)
 
@@ -895,7 +893,7 @@ class Item(Field):
         if uri is None:
             logging.error('ExtendedProperty.init_from_xml(): no child node ' +
                           'ExtendedFieldURI in node: %s',
-                          pretty_xml(node))
+                          utils.pretty_xml(node))
             return
 
         # Look for known extended properties
@@ -945,7 +943,7 @@ class Item(Field):
 
         try:
             return self.eprops_tagged[tag]
-        except KeyError, e:
+        except KeyError:
             return None
 
     def get_named_str_property(self, psetid, pname):
@@ -956,7 +954,7 @@ class Item(Field):
 
         try:
             return self.eprops_named_str[psetid][pname]
-        except KeyError, e:
+        except KeyError:
             return None
 
     def get_named_int_property(self, psetid, pid):
@@ -967,7 +965,7 @@ class Item(Field):
 
         try:
             return self.eprops_named_int[psetid][pid]
-        except KeyError, e:
+        except KeyError:
             logging.debug('Named int prop missing-psetid : %s, pid: 0x%x',
                           psetid, pid)
             return None

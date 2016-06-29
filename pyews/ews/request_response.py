@@ -17,18 +17,16 @@
 ##
 # You should have a copy of the license in the doc/ directory of pyews.  If
 # not, see <http://www.gnu.org/licenses/>.
-import pdb
+
 import logging
-import xml.etree.ElementTree as ET
 import pyews.utils as utils
 
 from abc import ABCMeta, abstractmethod
 from pyews.soap import SoapClient, QName_S, QName_T, QName_M
-from pyews.utils import pretty_xml
-from pyews.ews.contact import Contact
-from pyews.ews.item import Item, Content
-from pyews.ews.calendar import CalendarItem
-from pyews.ews.errors import EWSMessageError, EWSResponseError, EWSBaseErrorStr
+from .contact import Contact
+from .item import Content
+from .calendar import CalendarItem
+from .errors import EWSMessageError, EWSResponseError, EWSBaseErrorStr
 
 ##
 # Base classes
@@ -452,15 +450,13 @@ class FindFoldersResponse(Response):
         """
         node is a parsed XML Element containing the response
         """
-
-        from pyews.ews.folder import Folder as F
-
+        from .folder import Folder
         self.parse_for_errors(QName_M('FindFolderResponseMessage'))
 
         self.folders = []
         for folders in self.node.iter(QName_T('Folders')):
             for child in folders:
-                self.folders.append(F(self.req.ews, None, node=child))
+                self.folders.append(Folder(self.req.ews, None, node=child))
             break
 
 ##
