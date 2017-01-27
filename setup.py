@@ -32,7 +32,7 @@ setup(name='pyews',
           'Programming Language :: Python :: Implementation :: PyPy',
           'Topic :: Text Processing :: Markup :: XML',
       ],
-      py_modules=['pyews'],
+      packages=['pyews'],
       tests_require=['nose>=1.0', 'coverage'],
       install_requires=['requests==2.9.1', 'tornado==4.3'],
       )
